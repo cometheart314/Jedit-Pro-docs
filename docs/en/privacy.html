@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy - Jedit Pro</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav>
+  <a href="../ja/privacy.html">日本語</a>
+  <a href="./">Jedit Pro Home</a>
+  <a href="mcp.html">MCP Setup</a>
+</nav>
+<header>
+  <h1>Privacy Policy</h1>
+  <p>Privacy practices for Jedit Pro</p>
+</header>
+<main>
+  <section>
+    <h2>Overview</h2>
+    <p>Jedit Pro respects user privacy. The app does not collect, store, or transmit any personal information to third parties.</p>
+  </section>
+
+  <section>
+    <h2>Data Collection</h2>
+    <p>Jedit Pro <strong>does not collect</strong> any of the following:</p>
+    <ul>
+      <li>Personally identifiable information (name, email address, etc.)</li>
+      <li>Location data</li>
+      <li>Contacts or calendar data</li>
+      <li>Document contents</li>
+      <li>Contents of files targeted by multi-file find &amp; replace, or the search/replace strings used</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Network Communication</h2>
+    <p>Jedit Pro connects to a server at launch to check for in-app messages. In this communication:</p>
+    <ul>
+      <li>Only standard HTTP requests are sent</li>
+      <li>Document contents and user personal information are not transmitted</li>
+      <li>For usage statistics, the requesting IP address is recorded after being hashed (one-way transformation)</li>
+      <li>The original IP address cannot be recovered from the hashed value</li>
+      <li>This information is used solely for tallying daily unique user counts</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>iCloud</h2>
+    <p>Jedit Pro provides the ability to sync documents through iCloud Drive. Data stored in iCloud is managed under Apple's privacy policy. The developers of Jedit Pro do not access data stored in iCloud.</p>
+  </section>
+
+  <section>
+    <h2>Files Accessed by Multi-File Find &amp; Replace</h2>
+    <p>The multi-file find &amp; replace feature operates only on files and folders explicitly specified by the user. These files are read or written locally for the search and replace operation; they are never transmitted externally. Search strings, replacement strings, and history are stored only in the local storage of your Mac.</p>
+  </section>
+
+  <section>
+    <h2>MCP Server and AI Client Integration</h2>
+    <p>If you choose to enable it, Jedit Pro can run a local MCP (Model Context Protocol) server. When this feature is enabled:</p>
+    <ul>
+      <li>The server binds to <code>127.0.0.1</code> (loopback) only and is reachable solely from within the same Mac. It cannot be accessed over the Internet.</li>
+      <li>Connections require Bearer token authentication (auto-generated).</li>
+      <li>Jedit Pro itself does not connect to any AI vendor servers (Anthropic, OpenAI, etc.). The AI client (such as Claude Desktop) is what communicates with the vendor.</li>
+      <li>Results returned by tool invocations (i.e., the contents of your open documents) may be transmitted to the AI vendor via that AI client. Please refer to each client's privacy policy for details.</li>
+      <li>When handling confidential documents, we recommend closing them or disabling the MCP server.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Local Data</h2>
+    <p>App settings (font size, display preferences, search history, presets, etc.) are stored only in the local storage of your Mac and are not transmitted externally.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>For questions regarding privacy, please contact Artman21 User Support at <a href="mailto:support@artman21.co.jp">support@artman21.co.jp</a>.</p>
+  </section>
+
+  <p style="margin-top: 48px; font-size: 13px; color: #888;">Last updated: May 14, 2026</p>
+</main>
+<footer>
+  <p>&copy; 2026 Satoshi Matsumoto. All rights reserved.</p>
+</footer>
+</body>
+</html>

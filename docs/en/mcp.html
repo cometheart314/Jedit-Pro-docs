@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Jedit Pro from Claude Desktop - Jedit Pro</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  .toc { background: #f5f7fa; border-left: 4px solid #0f3460; padding: 16px 24px; margin: 24px 0; border-radius: 4px; }
+  .toc ol { margin: 0; padding-left: 24px; }
+  .toc li { margin-bottom: 4px; }
+  .toc a { color: #0066cc; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  pre { background: #1d1d1f; color: #f0f0f0; padding: 16px; border-radius: 8px; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; line-height: 1.5; margin: 12px 0; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; background: rgba(0,0,0,0.06); padding: 1px 6px; border-radius: 3px; }
+  pre code { background: transparent; padding: 0; }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 14px; }
+  th, td { border: 1px solid #e0e0e0; padding: 8px 12px; text-align: left; vertical-align: top; }
+  th { background: #f5f7fa; font-weight: 600; }
+  blockquote { border-left: 4px solid #b0c4de; background: #f9fbff; margin: 16px 0; padding: 12px 18px; color: #444; }
+  .callout { background: #fff8e1; border-left: 4px solid #f5a623; padding: 12px 18px; margin: 16px 0; border-radius: 4px; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../ja/mcp.html">日本語</a>
+  <a href="./">Jedit Pro Home</a>
+  <a href="privacy.html">Privacy Policy</a>
+</nav>
+<header>
+  <h1>Use Jedit Pro from Claude Desktop</h1>
+  <p>Setup guide for the built-in MCP server</p>
+</header>
+<main>
+  <section>
+    <p>Jedit Pro includes a built-in <strong>MCP (Model Context Protocol) server</strong> that lets AI clients read and edit the documents you have open. This page explains how to use it from <strong>Claude Desktop</strong>.</p>
+
+    <div class="callout">
+      <p>MCP is an open specification authored by Anthropic, but as of <strong>May 2026, Claude Desktop and Claude Code are practically the only GUI clients that handle local MCP servers reliably</strong>. Cursor, Zed, Gemini CLI, and others support MCP to varying degrees, while the web versions of ChatGPT and Gemini cannot reach localhost and require HTTPS plus OAuth, so they currently cannot connect to a local MCP server.</p>
+      <p style="margin-top: 8px;">This guide is therefore written around Claude Desktop. Support in other clients is changing rapidly and is not tracked here.</p>
+    </div>
+
+    <div class="toc">
+      <strong>Contents</strong>
+      <ol>
+        <li><a href="#features">What you can do</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#examples">Usage examples</a></li>
+        <li><a href="#tools">Available tools</a></li>
+        <li><a href="#security">Privacy and security</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>1. What you can do</h2>
+    <ul>
+      <li>Let Claude read your open documents</li>
+      <li>Let Claude edit them (replace / insert / create new)</li>
+      <li>Run in-document searches via Claude (the Find Bar opens automatically)</li>
+      <li>Work across multiple open documents</li>
+    </ul>
+    <p>See the <a href="#tools">tools list</a> below for the full set of operations.</p>
+  </section>
+
+  <section id="requirements">
+    <h2>2. Requirements</h2>
+    <ul>
+      <li>macOS 15.6 or later</li>
+      <li>Jedit Pro 1.0 or later</li>
+      <li><a href="https://claude.ai/download">Claude Desktop</a></li>
+      <li>A Claude account (Free / Pro / Max)</li>
+    </ul>
+    <p>No Node.js, npx, or other extra dependencies are needed; Jedit Pro ships with its own bridge executable.</p>
+  </section>
+
+  <section id="setup">
+    <h2>3. Setup</h2>
+
+    <h3 style="margin-top: 24px;">3-1. Enable the MCP server in Jedit Pro</h3>
+    <ol>
+      <li>Launch Jedit Pro.</li>
+      <li>Menu: <code>Jedit Pro → Settings…</code> (or <code>Cmd+,</code>).</li>
+      <li>Select the <strong>AI / MCP</strong> pane from the toolbar.</li>
+      <li>Check <strong>Enable MCP server</strong>.</li>
+      <li>Verify that the status shows a green <strong>"Running on 127.0.0.1:NNNNN"</strong>.
+        <ul>
+          <li><code>NNNNN</code> is an auto-assigned port.</li>
+          <li>If you want a fixed port, type a number (e.g. <code>49200</code>) into the Port field and toggle the checkbox off/on once.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3 style="margin-top: 24px;">3-2. Register with Claude Desktop (one click)</h3>
+    <ol>
+      <li>In the same AI / MCP pane, click <strong>Install for Claude Desktop…</strong>.</li>
+      <li>On first use, a file picker appears:
+        <ul>
+          <li>Navigate to <code>~/Library/Application Support/Claude/</code>.</li>
+          <li>Select <code>claude_desktop_config.json</code>.</li>
+          <li>Click "Use This File".</li>
+        </ul>
+      </li>
+      <li>Wait for the "Installed for Claude Desktop" message.</li>
+      <li><strong>Quit Claude Desktop completely</strong> (<code>Cmd+Q</code>) and relaunch it.</li>
+    </ol>
+    <blockquote>
+      <p>The file picker only appears the first time. After that, pressing the same button updates the entry with the current port and token.</p>
+    </blockquote>
+
+    <h3 style="margin-top: 24px;">3-3. Verify the connection</h3>
+    <ol>
+      <li>Open a new chat in Claude Desktop.</li>
+      <li>The tools indicator below the message box should list "Jedit-Pro".</li>
+      <li>Open any document in Jedit Pro and try asking Claude:
+        <blockquote>"What document is currently open in Jedit?"</blockquote>
+        Claude will call the <code>list_open_documents</code> tool and report the result.
+      </li>
+    </ol>
+  </section>
+
+  <section id="examples">
+    <h2>4. Usage examples</h2>
+    <p>Once connected, just ask Claude in plain language. It will call the right tools as needed.</p>
+    <table>
+      <thead>
+        <tr><th>What you want</th><th>Example request to Claude</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Read the whole document</td><td>"Read the active document and give me a summary."</td></tr>
+        <tr><td>Rewrite the entire document</td><td>"Rewrite this draft in a more formal tone, directly in the open tab."</td></tr>
+        <tr><td>Replace text</td><td>"Replace every occurrence of 'TODO' with 'DONE' in the current document."</td></tr>
+        <tr><td>Search</td><td>"Find the main function." (The Find Bar opens with matches highlighted.)</td></tr>
+        <tr><td>Create a new document</td><td>"Create a cleaned-up version of the meeting notes in a new tab."</td></tr>
+        <tr><td>Work across documents</td><td>"Read every open file and find any duplicate paragraphs across them."</td></tr>
+        <tr><td>Keep translation consistent</td><td>"Translate tab 1's English text into Japanese, matching the terminology already used in tab 2."</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 24px;">"Find ..." example</h3>
+    <p>The <code>find_in_document</code> tool not only returns matches as JSON but also <strong>opens the Find Bar in Jedit Pro and highlights every match</strong>. Jedit Pro is brought to the front, so you can see the result both in the Claude chat and in the editor.</p>
+    <p>If you want a silent search (no UI changes), ask Claude to "search without opening the Find Bar"; it will pass <code>showInFindBar: false</code> to the tool.</p>
+  </section>
+
+  <section id="tools">
+    <h2>5. Available tools</h2>
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Function</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>list_open_documents</code></td><td>id, title, file URL, and length of every open document</td></tr>
+        <tr><td><code>get_active_document</code></td><td>Full text and current selection of the frontmost document</td></tr>
+        <tr><td><code>get_document</code></td><td>Full text and current selection of a document by id</td></tr>
+        <tr><td><code>replace_range</code></td><td>Replace a range with given text (undo-aware)</td></tr>
+        <tr><td><code>insert_at</code></td><td>Insert text at a given location (undo-aware)</td></tr>
+        <tr><td><code>find_in_document</code></td><td>Regex or literal search; results displayed in the Find Bar</td></tr>
+        <tr><td><code>create_document</code></td><td>Create a new untitled document and optionally populate it</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="security">
+    <h2>6. Privacy and security</h2>
+
+    <h3 style="margin-top: 24px;">Reachability</h3>
+    <ul>
+      <li>The MCP server binds to <strong>127.0.0.1 (loopback) only</strong>.</li>
+      <li>It cannot be reached from other machines or networks.</li>
+      <li>No document content is ever sent over the Internet by Jedit Pro itself.</li>
+    </ul>
+
+    <h3 style="margin-top: 24px;">Authentication</h3>
+    <ul>
+      <li>A 24-byte random Bearer token is required.</li>
+      <li>Other user accounts on the same Mac cannot read it.</li>
+      <li>You can rotate the token any time with the "Regenerate" button.</li>
+    </ul>
+
+    <h3 style="margin-top: 24px;">Communication with Claude (Anthropic)</h3>
+    <ul>
+      <li>Claude Desktop sends <strong>only what you type in chat</strong> to Anthropic's servers.</li>
+      <li>The results returned by MCP tools (i.e. document contents) are also sent so Claude can use them in its reply.</li>
+      <li>To keep a sensitive document out of these calls, close it or disable the MCP server.</li>
+    </ul>
+
+    <h3 style="margin-top: 24px;">Availability</h3>
+    <ul>
+      <li>The MCP server is active only while Jedit Pro is running.</li>
+      <li>Quitting Jedit Pro immediately cuts off all access.</li>
+    </ul>
+  </section>
+
+  <section id="troubleshooting">
+    <h2>7. Troubleshooting</h2>
+
+    <h3 style="margin-top: 24px;">Jedit-Pro is not listed in Claude Desktop's tool menu</h3>
+    <ul>
+      <li>Validate the JSON: <code>jq . ~/Library/Application\ Support/Claude/claude_desktop_config.json</code>.</li>
+      <li>Quit Claude Desktop <strong>completely</strong> (Cmd+Q until the menu bar icon disappears) and relaunch it.</li>
+      <li>Confirm that the AI / MCP pane status is green ("Running").</li>
+    </ul>
+
+    <h3 style="margin-top: 24px;">"Jedit Pro is not running" error</h3>
+    <ul>
+      <li>Is Jedit Pro actually running?</li>
+      <li>Is the MCP server enabled in its preferences?</li>
+      <li>If you changed the port, press "Install for Claude Desktop" again to refresh the config.</li>
+    </ul>
+
+    <h3 style="margin-top: 24px;">Opening <code>http://127.0.0.1:NNNNN/</code> in a browser shows "Not Found"</h3>
+    <ul>
+      <li>This is expected. The server accepts only POST; GET returns 404 (or a small status page).</li>
+      <li>That you got a response at all confirms the server is up.</li>
+    </ul>
+
+    <h3 style="margin-top: 24px;">The chosen port is in use</h3>
+    <ul>
+      <li>Enter a different port (we recommend something in the 49152–65535 dynamic range).</li>
+      <li>Or set it to <code>0</code> to let the OS pick one.</li>
+    </ul>
+
+    <h3 style="margin-top: 24px;">Viewing server logs in Console.app</h3>
+    <pre><code>subsystem:com.jedit.pro category:mcp</code></pre>
+    <p>Filter by that predicate to see server-side log entries.</p>
+  </section>
+
+  <section>
+    <h2>Related links</h2>
+    <ul>
+      <li><a href="https://modelcontextprotocol.io/">Model Context Protocol website</a></li>
+      <li><a href="https://claude.ai/download">Download Claude Desktop</a></li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2026 Satoshi Matsumoto. All rights reserved.</p>
+  <p><a href="privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>
