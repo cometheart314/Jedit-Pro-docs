@@ -94,32 +94,41 @@
       </li>
     </ol>
 
-    <h3 style="margin-top: 24px;">3-2. Claude Desktop に登録 (1 クリック)</h3>
+    <h3 style="margin-top: 24px;">3-2. Claude Desktop に登録</h3>
     <ol>
       <li>同じ「AI / MCP」ペインで <strong>「Claude Desktop にインストール…」</strong> ボタンを押す</li>
-      <li>初回のみ、ファイル選択ダイアログが開く:
+      <li><strong>保存ダイアログ</strong>が開く (毎回開きます。場所を毎回確認できるようにするためです):
         <ul>
-          <li><code>~/Library/Application Support/Claude/</code> を開く</li>
-          <li><code>claude_desktop_config.json</code> を選択</li>
-          <li>「このファイルを使う」を押す</li>
+          <li>保存先が <code>~/Library/Application Support/Claude/</code> になっていることを確認</li>
+          <li>ファイル名は <code>claude_desktop_config.json</code> のまま</li>
+          <li><strong>「インストール」</strong> ボタンを押す</li>
         </ul>
+      </li>
+      <li>既に <code>claude_desktop_config.json</code> が存在する場合は macOS 標準の
+        <strong>「同じ名前のファイルが既に存在します。置き換えますか?」</strong> ダイアログが出ます。
+        <strong>「置き換える」</strong> を押してください。
+        <div class="callout">
+          <p><strong>「置き換える」と表示されますが、ファイルの中身が消えるわけではありません。</strong>
+          Jedit Pro は既存ファイルを読み込んでから Jedit-Pro エントリだけを追加 / 更新して書き戻します。
+          Claude Desktop 自身や他の MCP サーバー (Filesystem, GitHub など) の設定はそのまま残ります。</p>
+          <p style="margin-top: 8px;">macOS の保存ダイアログが「置き換える」と表示するのは仕様で、内容のマージは Jedit Pro 側で行っています。心配な方は事前に <code>claude_desktop_config.json</code> をバックアップしてから操作してください。</p>
+        </div>
       </li>
       <li>「Claude Desktop にインストールしました」のメッセージが出れば成功</li>
       <li><strong>Claude Desktop を完全終了</strong> (<code>Cmd+Q</code>) し、起動し直す</li>
     </ol>
     <blockquote>
-      <p>2 回目以降は手順 2 のファイル選択は省略されます。ポートやトークンが変わった時に同じボタンを押せば、最新値で自動更新されます。</p>
+      <p>ポートやトークンが変わった時も同じボタンを押せば、最新値で自動更新されます (前回のフォルダが初期表示されます)。</p>
     </blockquote>
 
     <h3 style="margin-top: 24px;">3-3. 動作確認</h3>
-    <ol>
-      <li>Claude Desktop で新しいチャットを開く</li>
-      <li>入力欄の下部に「Jedit-Pro」が表示されていれば接続成功</li>
-      <li>試しに Jedit Pro で何か文書を開いた状態で、Claude にこう話しかける:
-        <blockquote>「Jedit で今開いている文書のタイトルを教えて」</blockquote>
-        Claude が <code>list_open_documents</code> ツールを呼び、結果を返してきます。
-      </li>
-    </ol>
+    <p>Jedit Pro で何か文書を開いた状態で Claude Desktop の新しいチャットを開き、こう話しかけてみてください:</p>
+    <blockquote>「Jedit で今開いている文書のタイトルを教えて」</blockquote>
+    <p>Claude が <code>list_open_documents</code> ツールを呼び、結果を返してくれば接続成功です。初回は「Jedit-Pro のツールを使ってもいいですか?」という確認ダイアログが Claude Desktop に出るので、許可してください。</p>
+    <div class="callout">
+      <p><strong>「Jedit-Pro」というラベルが Claude Desktop のウィンドウに見当たらない場合でも、上のテストが通っていれば接続は成立しています。</strong>
+      Claude Desktop の UI は更新が頻繁で、利用可能な MCP サーバー名を入力欄付近に表示するかどうかはバージョンによって変わります (macOS Tahoe + 最近の Claude Desktop ではラベル表示が消えていることがあります)。動作確認は「Claude がツールを呼べているか」で判断するのが確実です。</p>
+    </div>
   </section>
 
   <section id="examples">
@@ -224,8 +233,9 @@
     </ul>
 
     <h3 style="margin-top: 24px;">Console.app でログを見たい</h3>
+    <p><code>/System/Applications/Utilities/Console.app</code> を起動し、左サイドバーで自分の Mac を選択した状態で、ウィンドウ右上の <strong>検索フィールド</strong>に次の述語を入力してください (ターミナル / bash に貼り付けるコマンドではありません):</p>
     <pre><code>subsystem:com.jedit.pro category:mcp</code></pre>
-    <p>で絞り込むと MCP サーバー側のログが見えます。</p>
+    <p>これで MCP サーバー側のログだけに絞り込めます。リアルタイムで流したい場合は、ツールバーの「開始」ボタンを押してから Claude Desktop で操作してください。</p>
   </section>
 
   <section>

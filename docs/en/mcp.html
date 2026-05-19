@@ -93,32 +93,42 @@
       </li>
     </ol>
 
-    <h3 style="margin-top: 24px;">3-2. Register with Claude Desktop (one click)</h3>
+    <h3 style="margin-top: 24px;">3-2. Register with Claude Desktop</h3>
     <ol>
       <li>In the same AI / MCP pane, click <strong>Install for Claude Desktop…</strong>.</li>
-      <li>On first use, a file picker appears:
+      <li>A <strong>save dialog</strong> opens (it opens every time so you can confirm the location):
         <ul>
-          <li>Navigate to <code>~/Library/Application Support/Claude/</code>.</li>
-          <li>Select <code>claude_desktop_config.json</code>.</li>
-          <li>Click "Use This File".</li>
+          <li>Confirm the target folder is <code>~/Library/Application Support/Claude/</code>.</li>
+          <li>Leave the file name as <code>claude_desktop_config.json</code>.</li>
+          <li>Click <strong>Install</strong>.</li>
         </ul>
+      </li>
+      <li>If <code>claude_desktop_config.json</code> already exists, macOS shows its standard
+        <strong>"A file with the same name already exists. Do you want to replace it?"</strong> sheet.
+        Click <strong>Replace</strong>.
+        <div class="callout">
+          <p><strong>"Replace" here does not wipe out the existing file.</strong>
+          Jedit Pro reads the current file first, adds or updates only the Jedit-Pro entry,
+          and writes the merged result back. Your Claude Desktop settings and any other MCP servers
+          (Filesystem, GitHub, etc.) are preserved.</p>
+          <p style="margin-top: 8px;">The macOS save dialog always says "Replace" — the actual merge happens inside Jedit Pro. If you would like extra safety, back up <code>claude_desktop_config.json</code> before clicking Install.</p>
+        </div>
       </li>
       <li>Wait for the "Installed for Claude Desktop" message.</li>
       <li><strong>Quit Claude Desktop completely</strong> (<code>Cmd+Q</code>) and relaunch it.</li>
     </ol>
     <blockquote>
-      <p>The file picker only appears the first time. After that, pressing the same button updates the entry with the current port and token.</p>
+      <p>When the port or token changes later, press the same button to refresh the entry; the dialog pre-fills the folder you used last time.</p>
     </blockquote>
 
     <h3 style="margin-top: 24px;">3-3. Verify the connection</h3>
-    <ol>
-      <li>Open a new chat in Claude Desktop.</li>
-      <li>The tools indicator below the message box should list "Jedit-Pro".</li>
-      <li>Open any document in Jedit Pro and try asking Claude:
-        <blockquote>"What document is currently open in Jedit?"</blockquote>
-        Claude will call the <code>list_open_documents</code> tool and report the result.
-      </li>
-    </ol>
+    <p>Open any document in Jedit Pro, start a new chat in Claude Desktop, and ask:</p>
+    <blockquote>"What document is currently open in Jedit?"</blockquote>
+    <p>If Claude calls <code>list_open_documents</code> and reports the title, the connection is working. The first time, Claude Desktop will pop up a "Allow Jedit-Pro to use these tools?" confirmation — accept it.</p>
+    <div class="callout">
+      <p><strong>You do not need to see a "Jedit-Pro" label anywhere in Claude Desktop's window for this to work.</strong>
+      Claude Desktop's UI changes frequently, and whether it displays available MCP server names near the message box varies by version (recent builds on macOS Tahoe often omit that label). The reliable test is whether Claude can actually call the tools.</p>
+    </div>
   </section>
 
   <section id="examples">
@@ -223,8 +233,9 @@
     </ul>
 
     <h3 style="margin-top: 24px;">Viewing server logs in Console.app</h3>
+    <p>Launch <code>/System/Applications/Utilities/Console.app</code>, select your Mac in the sidebar, and type the following predicate into the <strong>search field</strong> in the top-right of the window (this is a Console filter, not a shell command — do not paste it into Terminal/bash):</p>
     <pre><code>subsystem:com.jedit.pro category:mcp</code></pre>
-    <p>Filter by that predicate to see server-side log entries.</p>
+    <p>That filter narrows the log stream to MCP server entries. Click "Start" in the toolbar if you want to watch them live while you interact with Claude Desktop.</p>
   </section>
 
   <section>
