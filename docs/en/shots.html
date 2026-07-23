@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jedit Pro の画面</title>
+<title>Jedit Pro Screens</title>
 <link rel="stylesheet" href="../style.css?v=3">
 </head>
 <body>
 <nav>
-  <a href="index.html#features">&larr; 機能一覧に戻る</a>
+  <a href="index.html#features">&larr; Back to features</a>
 </nav>
 <main class="wide">
   <div class="viewer-head">
-    <a href="index.html#features" class="btn btn-secondary">&larr; 機能一覧に戻る</a>
+    <a href="index.html#features" class="btn btn-secondary">&larr; Back to features</a>
     <span class="counter" id="counter"></span>
   </div>
 
@@ -23,20 +23,20 @@
   </div>
 
   <div class="viewer-nav">
-    <button type="button" class="btn btn-secondary" id="prev">&larr; 前へ</button>
-    <button type="button" class="btn btn-secondary" id="next">次へ &rarr;</button>
+    <button type="button" class="btn btn-secondary" id="prev">&larr; Previous</button>
+    <button type="button" class="btn btn-secondary" id="next">Next &rarr;</button>
   </div>
 
   <p class="viewer-hint">
-    <strong>&larr;</strong> / <strong>&rarr;</strong> キーで画面を切り替え、
-    <strong>Esc</strong> キーで機能一覧に戻ります。
+    Use <strong>&larr;</strong> / <strong>&rarr;</strong> to move between screens,
+    and <strong>Esc</strong> to go back to the feature list.
   </p>
 
   <p class="viewer-desc" id="shot-desc"></p>
 </main>
 <footer>
   <p>&copy; 2026 Satoshi Matsumoto. All rights reserved.</p>
-  <p><a href="privacy.html">プライバシーポリシー</a></p>
+  <p><a href="privacy.html">Privacy Policy</a></p>
 </footer>
 
 <script>
@@ -46,33 +46,33 @@
   var SHOTS = [
     {
       id: "multi-search",
-      title: "マルチ検索・置換",
-      desc: "複数のファイルを横断して検索し、結果パネルからジャンプ・一括置換が可能。マルチペアの一括置換にも対応します。"
+      title: "Multi-File Find & Replace",
+      desc: "Search across multiple files at once. Jump from a results panel to any match, replace selected matches in bulk, and run multi-pair batch replacements."
     },
     {
       id: "document-compare",
-      title: "書類の比較",
-      desc: "2 つの書類を左右に並べて差異を色分け表示。保存済みのバージョンとの比較にも対応し、差異部分のダブルクリックで書類の該当箇所へジャンプできます。"
+      title: "Document Comparison",
+      desc: "Compare two documents side by side with color-coded differences. You can also compare against a saved version, and double-click a difference to jump to that spot in the document."
     },
     {
       id: "smart-index",
-      title: "スマートインデックス",
-      desc: "サイドバーに見出し一覧を自動生成。Markdown、HTML、プログラミング言語などに対応した抽出ルールをカスタマイズでき、ブックマークへの取り込みも可能です。"
+      title: "Smart Index",
+      desc: "Auto-generate an outline in the sidebar. Customizable extraction rules support Markdown, HTML, programming languages, and more, and entries can be imported into bookmarks."
     },
     {
       id: "syntax-coloring",
-      title: "シンタックスカラーリング",
-      desc: "プログラミング言語やマークアップ言語のキーワードを色分け表示。組み込み定義に加え、ユーザー定義のカラーリングを追加できます。"
+      title: "Syntax Coloring",
+      desc: "Color-code keywords for programming and markup languages. Built-in language definitions plus user-defined coloring rules."
     },
     {
       id: "shortcuts",
-      title: "メニュー / キーバインドのカスタマイズ",
-      desc: "メニュー項目のキーボードショートカット、およびテキスト編集時のキー操作を自由に変更できます。Emacs 風キーバインドの再現も可能。"
+      title: "Menu / Key Binding Customization",
+      desc: "Customize menu keyboard shortcuts and text editing key bindings. Emacs-style key bindings can be reproduced."
     },
     {
       id: "ruby",
-      title: "青空文庫ルビ",
-      desc: "青空文庫形式の注記（｜漢字《かんじ》）をルビとして実際に描画。縦書き・横書きのどちらでも、編集画面・印刷・HTML 書き出しのすべてでルビが反映されます。"
+      title: "Aozora Bunko Ruby",
+      desc: "Aozora Bunko annotations are rendered as real ruby text. Ruby appears in the editor, in print, and in HTML export, in both vertical and horizontal writing."
     }
   ];
 
@@ -95,17 +95,17 @@
     return 0;
   }
 
-  // 履歴を汚さずにハッシュだけ差し替える。ブラウザの「戻る」が
-  // 画面送りの履歴をたどらず、そのまま機能一覧へ戻るようにするため。
+  // Replace the hash instead of pushing it, so the browser's Back button
+  // returns to the feature list rather than stepping through every screen.
   function show(i, updateHash) {
     index = (i + SHOTS.length) % SHOTS.length;
     var s = SHOTS[index];
-    img.src = "../shots/ja/" + s.id + ".png";
+    img.src = "../shots/en/" + s.id + ".png";
     img.alt = s.title;
     titleEl.textContent = s.title;
     descEl.textContent = s.desc;
     counterEl.textContent = (index + 1) + " / " + SHOTS.length;
-    document.title = s.title + " — Jedit Pro の画面";
+    document.title = s.title + " — Jedit Pro Screens";
     if (updateHash !== false && history.replaceState) {
       history.replaceState(null, "", "#" + s.id);
     }
