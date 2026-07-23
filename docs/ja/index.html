@@ -21,7 +21,7 @@
 <main>
   <section>
     <h2>Jedit Pro について</h2>
-    <p>Jedit Pro は、無料の <a href="https://cometheart314.github.io/Jedit-open/ja/">Jedit</a> に旧版 Jedit Ω 由来の高度な編集機能を加えた上位版テキストエディタです。Jedit のすべての機能に加えて、複数ファイルにまたがる検索・置換、強制改行、ソート、Unicode 正規化など、長文・大量ファイルを扱う方や日本語処理を多用する方向けの機能を搭載しています。</p>
+    <p>Jedit Pro は、無料の <a href="https://cometheart314.github.io/Jedit-open/ja/">Jedit</a> に旧版 Jedit Ω 由来の高度な編集機能を加えた上位版テキストエディタです。Jedit のすべての機能に加えて、複数ファイルにまたがる検索・置換、書類比較、青空文庫ルビ・傍点、強制改行、ソート、Unicode 正規化などを搭載し、長文・大量ファイルを扱う方や日本語の組版・処理を多用する方に向けた構成です。</p>
     <div style="margin-top: 20px;">
       <span class="btn" style="opacity:0.6; cursor:default;">Mac App Store 近日公開</span>
       <a href="https://cometheart314.github.io/Jedit-open/ja/" class="btn btn-secondary">Jedit（無料版）はこちら</a>
@@ -31,7 +31,7 @@
 
   <section>
     <h2>Jedit との違い</h2>
-    <p>Jedit Pro は Jedit が備える基本機能（複数フォーマット対応、横書き/縦書き、iCloud 同期、AppleScript、印刷機能、文字コード対応など）をすべて含みます。その上で、以下の Pro 専用機能が利用できます。</p>
+    <p>Jedit Pro は Jedit が備える基本機能（複数フォーマット対応、横書き/縦書き、ページ表示、iCloud 同期、AppleScript、印刷機能、文字コード対応など）をすべて含みます。その上で、以下の Pro 専用機能が利用できます。</p>
   </section>
 
   <section>
@@ -42,12 +42,51 @@
         <p>複数のファイルを横断して検索し、結果パネルからジャンプ・一括置換が可能。マルチペアの一括置換にも対応します。</p>
       </div>
       <div class="feature-card">
-        <h3>ツールメニュー</h3>
-        <p>テキスト処理に役立つコマンドを多数搭載。下記の各種機能をワンクリックで実行できます。</p>
+        <h3>書類の比較</h3>
+        <p>2 つの書類を左右に並べて差異を色分け表示。保存済みのバージョンとの比較にも対応し、差異部分のダブルクリックで書類の該当箇所へジャンプできます。</p>
       </div>
       <div class="feature-card">
-        <h3>強制改行</h3>
-        <p>指定した幅で行を折り返して LF を挿入。プレフィックスの付加・除去や、自動インデント保持にも対応。</p>
+        <h3>スマートインデックス</h3>
+        <p>サイドバーに見出し一覧を自動生成。Markdown、HTML、プログラミング言語などに対応した抽出ルールをカスタマイズでき、ブックマークへの取り込みも可能です。</p>
+      </div>
+      <div class="feature-card">
+        <h3>シンタックスカラーリング</h3>
+        <p>プログラミング言語やマークアップ言語のキーワードを色分け表示。組み込み定義に加え、ユーザー定義のカラーリングを追加できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>メニュー / キーバインドのカスタマイズ</h3>
+        <p>メニュー項目のキーボードショートカット、およびテキスト編集時のキー操作を自由に変更できます。Emacs 風キーバインドの再現も可能。</p>
+      </div>
+      <div class="feature-card">
+        <h3>青空文庫ルビ</h3>
+        <p>青空文庫形式の注記（｜漢字《かんじ》）をルビとして実際に描画。縦書き・横書きのどちらでも、編集画面・印刷・HTML 書き出しのすべてでルビが反映されます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>傍点（圏点）</h3>
+        <p>ゴマ点・丸・二重丸・白ゴマなど 9 種類の傍点に対応。左傍点やルビとの併用にも対応し、入力用のダイアログから選択して適用できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>電子出版向け HTML 書き出し</h3>
+        <p>ルビや傍点を含む書類を、電子書籍で扱いやすい HTML として書き出し。青空文庫の注記をそのまま Web / EPUB 向けのマークアップに変換します。</p>
+      </div>
+      <div class="feature-card">
+        <h3>高品質な読み上げ</h3>
+        <p>macOS 標準の音声に加え、Google Cloud Text-to-Speech の高品質な音声で書類を読み上げできます（API キーの設定が必要）。</p>
+      </div>
+      <div class="feature-card">
+        <h3>AI クライアント連携 (MCP)</h3>
+        <p>Claude Desktop などの AI クライアントから Jedit Pro で開いている文書を読み書きできる、MCP サーバー機能を搭載。<a href="mcp.html">セットアップ手順 &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>ツールメニュー</h2>
+    <p>テキスト処理に役立つコマンドを多数搭載し、下記の各種機能をワンクリックで実行できます。</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>強制改行・プレフィックス</h3>
+        <p>指定した幅で行を折り返して LF を挿入。引用記号などのプレフィックスの付加・除去や、自動インデント保持にも対応。</p>
       </div>
       <div class="feature-card">
         <h3>ソート</h3>
@@ -58,38 +97,41 @@
         <p>NFC・NFD・NFKC・NFKD の各形式に対応。Mac/Windows 間のテキスト互換性確保や、文字コード問題の解決に役立ちます。</p>
       </div>
       <div class="feature-card">
-        <h3>漢字部首の検出と変換</h3>
-        <p>「⼈」「⽇」など部首単独文字を検出し、対応する標準 CJK 文字（人・日 など）に一括変換します。</p>
-      </div>
-      <div class="feature-card">
         <h3>半角⇔全角変換</h3>
         <p>英数字、カタカナ、記号それぞれの半角/全角を細かく指定して変換。プリセット保存機能付き。</p>
+      </div>
+      <div class="feature-card">
+        <h3>漢字部首の検出と変換</h3>
+        <p>「⼈」「⽇」など部首単独文字を検出し、対応する標準 CJK 文字（人・日 など）に一括変換します。</p>
       </div>
       <div class="feature-card">
         <h3>整形・クリーンアップ</h3>
         <p>行頭/行末スペースの削除、タブ/スペースインデントの相互変換、重複行の削除・カウント、行の逆順並べ替えなど。</p>
       </div>
       <div class="feature-card">
-        <h3>シンタックスカラーリング</h3>
-        <p>プログラミング言語やマークアップ言語のキーワードを色分け表示。組み込み定義に加え、ユーザー定義のカラーリングを追加できます。</p>
-      </div>
-      <div class="feature-card">
-        <h3>スマートインデックス</h3>
-        <p>サイドバーに見出し一覧を自動生成。Markdown、HTML、プログラミング言語などに対応した抽出ルールをカスタマイズ可能。</p>
-      </div>
-      <div class="feature-card">
-        <h3>メニュー / キーバインドのカスタマイズ</h3>
-        <p>メニュー項目のキーボードショートカット、およびテキスト編集時のキー操作を自由に変更できます。Emacs 風キーバインドの再現も可能。</p>
-      </div>
-      <div class="feature-card">
-        <h3>AI クライアント連携 (MCP)</h3>
-        <p>Claude Desktop などの AI クライアントから Jedit Pro で開いている文書を読み書きできる、MCP サーバー機能を搭載。<a href="mcp.html">セットアップ手順 &rarr;</a></p>
+        <h3>文字コード互換性チェック</h3>
+        <p>指定した文字エンコーディングで保存できない文字を事前に検出。文字化けを防ぎ、該当箇所を確認できます。</p>
       </div>
       <div class="feature-card">
         <h3>その他のツール</h3>
         <p>URL 文字列への自動リンク付加、ひらがな⇔カタカナ変換、漢字→ひらがな変換、文字コード表示など。</p>
       </div>
     </div>
+  </section>
+
+  <section>
+    <h2>Jedit Ω からの移行</h2>
+    <p>旧版 <strong>Jedit Ω</strong> は 2025 年 11 月末をもって販売およびサポートを終了しました。新しい Jedit / Jedit Pro は、Jedit Ω をベースに全くゼロから書き直された後継エディタです。</p>
+    <p style="margin-top: 8px;">無料版 Jedit では再実装を見送った Jedit Ω の機能のうち、以下は Jedit Pro でご利用いただけます。</p>
+    <ul>
+      <li>マルチファイル検索/置換機能</li>
+      <li>書類ファイルの比較機能</li>
+      <li>Jedit Ω ツールメニューの各種機能</li>
+      <li>シンタックスカラーリング</li>
+      <li>スマートインデックス</li>
+      <li>メニューショートカットのカスタマイズ</li>
+      <li>キーバインドのカスタマイズ</li>
+    </ul>
   </section>
 
   <section>

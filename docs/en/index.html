@@ -21,7 +21,7 @@
 <main>
   <section>
     <h2>About Jedit Pro</h2>
-    <p>Jedit Pro is the upgraded edition of the free <a href="https://cometheart314.github.io/Jedit-open/en/">Jedit</a>, with advanced editing features inherited from the legacy Jedit Ω. In addition to everything Jedit offers, it provides multi-file find and replace, hard line wrapping, sorting, Unicode normalization, and many other tools designed for users who handle long documents, large numbers of files, or extensive Japanese text processing.</p>
+    <p>Jedit Pro is the upgraded edition of the free <a href="https://cometheart314.github.io/Jedit-open/en/">Jedit</a>, with advanced editing features inherited from the legacy Jedit Ω. In addition to everything Jedit offers, it provides multi-file find and replace, document comparison, Aozora Bunko ruby and emphasis dots, hard line wrapping, sorting, Unicode normalization, and many other tools designed for users who handle long documents, large numbers of files, or extensive Japanese typesetting and text processing.</p>
     <div style="margin-top: 20px;">
       <span class="btn" style="opacity:0.6; cursor:default;">Coming Soon to the Mac App Store</span>
       <a href="https://cometheart314.github.io/Jedit-open/en/" class="btn btn-secondary">Get Jedit (free)</a>
@@ -31,7 +31,7 @@
 
   <section>
     <h2>How It Differs from Jedit</h2>
-    <p>Jedit Pro includes all of Jedit's core features (multiple format support, horizontal/vertical writing, iCloud sync, AppleScript, printing, character encoding support, and more). On top of those, the following Pro-only features are available.</p>
+    <p>Jedit Pro includes all of Jedit's core features (multiple format support, horizontal/vertical writing, page layout view, iCloud sync, AppleScript, printing, character encoding support, and more). On top of those, the following Pro-only features are available.</p>
   </section>
 
   <section>
@@ -42,12 +42,51 @@
         <p>Search across multiple files at once. Jump from a results panel to any match, replace selected matches in bulk, and run multi-pair batch replacements.</p>
       </div>
       <div class="feature-card">
-        <h3>Tools Menu</h3>
-        <p>A wide set of text-processing commands you can run with a single click. The features below are all part of this menu.</p>
+        <h3>Document Comparison</h3>
+        <p>Compare two documents side by side with color-coded differences. You can also compare against a saved version, and double-click a difference to jump to that spot in the document.</p>
       </div>
       <div class="feature-card">
-        <h3>Hard Line Wrapping</h3>
-        <p>Wrap lines at a chosen width by inserting LFs. Supports adding/removing prefixes and preserving auto-indent.</p>
+        <h3>Smart Index</h3>
+        <p>Auto-generate an outline in the sidebar. Customizable extraction rules support Markdown, HTML, programming languages, and more, and entries can be imported into bookmarks.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Syntax Coloring</h3>
+        <p>Color-code keywords for programming and markup languages. Built-in language definitions plus user-defined coloring rules.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Menu / Key Binding Customization</h3>
+        <p>Customize menu keyboard shortcuts and text editing key bindings. Emacs-style key bindings can be reproduced.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Aozora Bunko Ruby</h3>
+        <p>Aozora Bunko annotations (｜漢字《かんじ》) are rendered as real ruby text. Ruby appears in the editor, in print, and in HTML export, in both vertical and horizontal writing.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Emphasis Dots</h3>
+        <p>Nine styles of emphasis marks, including sesame dots, filled and open circles. Supports marks on the opposite side of the text and can be combined with ruby, applied from a dedicated dialog.</p>
+      </div>
+      <div class="feature-card">
+        <h3>HTML Export for Digital Publishing</h3>
+        <p>Export documents containing ruby and emphasis dots as HTML that is ready for e-books, converting Aozora Bunko annotations into web- and EPUB-friendly markup.</p>
+      </div>
+      <div class="feature-card">
+        <h3>High-Quality Read Aloud</h3>
+        <p>In addition to the built-in macOS voices, documents can be read aloud with high-quality Google Cloud Text-to-Speech voices (requires an API key).</p>
+      </div>
+      <div class="feature-card">
+        <h3>AI Client Integration (MCP)</h3>
+        <p>Built-in MCP server lets AI clients like Claude Desktop read and edit the documents you have open in Jedit Pro. <a href="mcp.html">Setup guide &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tools Menu</h2>
+    <p>A wide set of text-processing commands you can run with a single click.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Hard Line Wrapping &amp; Prefixes</h3>
+        <p>Wrap lines at a chosen width by inserting LFs. Supports adding and removing prefixes such as quote markers, and preserving auto-indent.</p>
       </div>
       <div class="feature-card">
         <h3>Sort</h3>
@@ -58,38 +97,41 @@
         <p>Convert text to NFC, NFD, NFKC, or NFKD. Useful for ensuring text compatibility between Mac and Windows and for resolving character-encoding issues.</p>
       </div>
       <div class="feature-card">
-        <h3>Kanji Radical Detection</h3>
-        <p>Detect standalone CJK radical characters (such as ⼈, ⽇) in your text and convert them to the corresponding standard CJK characters (人, 日, etc.) in bulk.</p>
-      </div>
-      <div class="feature-card">
         <h3>Half / Full Width Conversion</h3>
         <p>Convert half-width and full-width forms of letters, katakana, and symbols separately, with fine-grained control. Save your conversion rules as presets.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Kanji Radical Detection</h3>
+        <p>Detect standalone CJK radical characters (such as ⼈, ⽇) in your text and convert them to the corresponding standard CJK characters (人, 日, etc.) in bulk.</p>
       </div>
       <div class="feature-card">
         <h3>Cleanup &amp; Reformatting</h3>
         <p>Remove leading/trailing spaces, convert between tab and space indentation, remove or count duplicate lines, and reverse line order.</p>
       </div>
       <div class="feature-card">
-        <h3>Syntax Coloring</h3>
-        <p>Color-code keywords for programming and markup languages. Built-in language definitions plus user-defined coloring rules.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Smart Index</h3>
-        <p>Auto-generate an outline in the sidebar. Customizable extraction rules support Markdown, HTML, programming languages, and more.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Menu / Key Binding Customization</h3>
-        <p>Customize menu keyboard shortcuts and text editing key bindings. Emacs-style key bindings can be reproduced.</p>
-      </div>
-      <div class="feature-card">
-        <h3>AI Client Integration (MCP)</h3>
-        <p>Built-in MCP server lets AI clients like Claude Desktop read and edit the documents you have open in Jedit Pro. <a href="mcp.html">Setup guide &rarr;</a></p>
+        <h3>Encoding Compatibility Check</h3>
+        <p>Find characters that cannot be saved in a given character encoding before you save, so you can review them and avoid corrupted text.</p>
       </div>
       <div class="feature-card">
         <h3>Other Tools</h3>
         <p>Auto-link URL strings, convert between hiragana and katakana, transliterate kanji to hiragana, show character codes, and more.</p>
       </div>
     </div>
+  </section>
+
+  <section>
+    <h2>Migrating from Jedit Ω</h2>
+    <p>The legacy <strong>Jedit Ω</strong> reached the end of sales and support at the end of November 2025. The new Jedit and Jedit Pro are successor editors, rewritten from scratch based on Jedit Ω.</p>
+    <p style="margin-top: 8px;">Of the Jedit Ω features that were not reimplemented in the free Jedit, the following are available in Jedit Pro.</p>
+    <ul>
+      <li>Multi-file find and replace</li>
+      <li>Document comparison</li>
+      <li>The commands of the Jedit Ω Tools menu</li>
+      <li>Syntax coloring</li>
+      <li>Smart Index</li>
+      <li>Menu shortcut customization</li>
+      <li>Key binding customization</li>
+    </ul>
   </section>
 
   <section>
