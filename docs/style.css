@@ -51,6 +51,24 @@ li { margin-bottom: 6px; }
 }
 .feature-card h3 { font-size: 16px; margin-bottom: 8px; color: #0f3460; }
 .feature-card p { font-size: 14px; color: #555; }
+/* スクリーンショット付きの機能ブロック（本文幅いっぱい） */
+.feature-wide {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.feature-wide h3 { font-size: 16px; margin-bottom: 12px; color: #0f3460; }
+.feature-wide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 12px;
+}
+.feature-wide p { font-size: 14px; color: #555; }
 .btn {
   display: inline-block;
   background: #0066cc;
