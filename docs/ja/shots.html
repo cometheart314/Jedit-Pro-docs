@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jedit Pro の画面</title>
+<link rel="stylesheet" href="../style.css?v=3">
+</head>
+<body>
+<nav>
+  <a href="index.html#features">&larr; 機能一覧に戻る</a>
+</nav>
+<main class="wide">
+  <div class="viewer-head">
+    <a href="index.html#features" class="btn btn-secondary">&larr; 機能一覧に戻る</a>
+    <span class="counter" id="counter"></span>
+  </div>
+
+  <h1 class="viewer-title" id="shot-title"></h1>
+
+  <div class="viewer-stage">
+    <img id="shot-img" alt="">
+  </div>
+
+  <div class="viewer-nav">
+    <button type="button" class="btn btn-secondary" id="prev">&larr; 前へ</button>
+    <button type="button" class="btn btn-secondary" id="next">次へ &rarr;</button>
+  </div>
+
+  <p class="viewer-hint">
+    <strong>&larr;</strong> / <strong>&rarr;</strong> キーで画面を切り替え、
+    <strong>Esc</strong> キーで機能一覧に戻ります。
+  </p>
+
+  <p class="viewer-desc" id="shot-desc"></p>
+</main>
+<footer>
+  <p>&copy; 2026 Satoshi Matsumoto. All rights reserved.</p>
+  <p><a href="privacy.html">プライバシーポリシー</a></p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var SHOTS = [
+    {
+      id: "multi-search",
+      title: "マルチ検索・置換",
+      desc: "複数のファイルを横断して検索し、結果パネルからジャンプ・一括置換が可能。マルチペアの一括置換にも対応します。"
+    },
+    {
+      id: "document-compare",
+      title: "書類の比較",
+      desc: "2 つの書類を左右に並べて差異を色分け表示。保存済みのバージョンとの比較にも対応し、差異部分のダブルクリックで書類の該当箇所へジャンプできます。"
+    },
+    {
+      id: "smart-index",
+      title: "スマートインデックス",
+      desc: "サイドバーに見出し一覧を自動生成。Markdown、HTML、プログラミング言語などに対応した抽出ルールをカスタマイズでき、ブックマークへの取り込みも可能です。"
+    },
+    {
+      id: "syntax-coloring",
+      title: "シンタックスカラーリング",
+      desc: "プログラミング言語やマークアップ言語のキーワードを色分け表示。組み込み定義に加え、ユーザー定義のカラーリングを追加できます。"
+    },
+    {
+      id: "shortcuts",
+      title: "メニュー / キーバインドのカスタマイズ",
+      desc: "メニュー項目のキーボードショートカット、およびテキスト編集時のキー操作を自由に変更できます。Emacs 風キーバインドの再現も可能。"
+    },
+    {
+      id: "ruby",
+      title: "青空文庫ルビ",
+      desc: "青空文庫形式の注記（｜漢字《かんじ》）をルビとして実際に描画。縦書き・横書きのどちらでも、編集画面・印刷・HTML 書き出しのすべてでルビが反映されます。"
+    }
+  ];
+
+  var BACK_URL = "index.html#features";
+
+  var img = document.getElementById("shot-img");
+  var titleEl = document.getElementById("shot-title");
+  var descEl = document.getElementById("shot-desc");
+  var counterEl = document.getElementById("counter");
+  var prevBtn = document.getElementById("prev");
+  var nextBtn = document.getElementById("next");
+
+  var index = 0;
+
+  function indexFromHash() {
+    var id = (location.hash || "").replace(/^#/, "");
+    for (var i = 0; i < SHOTS.length; i++) {
+      if (SHOTS[i].id === id) return i;
+    }
+    return 0;
+  }
+
+  // 履歴を汚さずにハッシュだけ差し替える。ブラウザの「戻る」が
+  // 画面送りの履歴をたどらず、そのまま機能一覧へ戻るようにするため。
+  function show(i, updateHash) {
+    index = (i + SHOTS.length) % SHOTS.length;
+    var s = SHOTS[index];
+    img.src = "../shots/" + s.id + ".png";
+    img.alt = s.title;
+    titleEl.textContent = s.title;
+    descEl.textContent = s.desc;
+    counterEl.textContent = (index + 1) + " / " + SHOTS.length;
+    document.title = s.title + " — Jedit Pro の画面";
+    if (updateHash !== false && history.replaceState) {
+      history.replaceState(null, "", "#" + s.id);
+    }
+  }
+
+  prevBtn.addEventListener("click", function () { show(index - 1); });
+  nextBtn.addEventListener("click", function () { show(index + 1); });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    switch (e.key) {
+      case "ArrowLeft":
+      case "ArrowUp":
+        e.preventDefault();
+        show(index - 1);
+        break;
+      case "ArrowRight":
+      case "ArrowDown":
+      case " ":
+        e.preventDefault();
+        show(index + 1);
+        break;
+      case "Home":
+        e.preventDefault();
+        show(0);
+        break;
+      case "End":
+        e.preventDefault();
+        show(SHOTS.length - 1);
+        break;
+      case "Escape":
+      case "Backspace":
+        e.preventDefault();
+        location.href = BACK_URL;
+        break;
+    }
+  });
+
+  window.addEventListener("hashchange", function () {
+    show(indexFromHash(), false);
+  });
+
+  show(indexFromHash(), false);
+})();
+</script>
+</body>
+</html>

@@ -69,6 +69,64 @@ li { margin-bottom: 6px; }
 }
 .feature-card .shot:hover { border-color: #0066cc; }
 .feature-card .shot:hover img { transform: scale(1.04); }
+
+/* スクリーンショット・ビューア (shots.html) */
+main.wide { max-width: 1100px; }
+.viewer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.viewer-head .btn { margin-top: 0; margin-right: 0; }
+.counter { font-size: 14px; color: #888; white-space: nowrap; }
+.viewer-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0f3460;
+  margin-bottom: 16px;
+}
+.viewer-stage {
+  background: #f5f5f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.viewer-stage img {
+  max-width: 100%;
+  max-height: 72vh;
+  height: auto;
+  border-radius: 6px;
+}
+.viewer-nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.viewer-nav .btn { margin-top: 0; margin-right: 0; }
+button.btn {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #0066cc;
+}
+.viewer-hint {
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+  margin-top: 16px;
+}
+.viewer-desc {
+  max-width: 800px;
+  margin: 20px auto 0;
+  font-size: 14px;
+  color: #555;
+}
+@media (max-width: 520px) {
+  .viewer-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
 .btn {
   display: inline-block;
   background: #0066cc;
