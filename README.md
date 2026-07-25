@@ -16,10 +16,12 @@ docs/
 ├── ja/
 │   ├── index.html     # Jedit Pro トップ (日本語)
 │   ├── privacy.html   # プライバシーポリシー
+│   ├── terms.html     # 利用規約 (EULA)
 │   └── mcp.html       # Claude Desktop 経由で Jedit Pro を使う
 └── en/
     ├── index.html
     ├── privacy.html
+    ├── terms.html
     └── mcp.html
 ```
 
