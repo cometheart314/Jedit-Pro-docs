@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jedit Pro - プレスリリース</title>
+<link rel="stylesheet" href="../style.css?v=4">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<nav>
+  <a href="../en/press-release.html">English</a>
+  <a href="press.html">プレスキット</a>
+  <a href="index.html">ホーム</a>
+</nav>
+<header>
+  <img src="../appicon-pro.png" alt="Jedit Pro" width="128" height="128" style="margin-bottom: 16px;">
+  <h1>プレスリリース</h1>
+  <p>Jedit Pro v1.0 公開のお知らせ</p>
+</header>
+<main>
+  <div id="content" class="markdown-body"></div>
+  <div style="margin-top: 32px;">
+    <a href="press-release.md" class="btn btn-secondary">Markdown 版をダウンロード</a>
+    <a href="press.html" class="btn">プレスキットへ</a>
+  </div>
+</main>
+<footer>
+  <p>&copy; 2026 Satoshi Matsumoto. All rights reserved.</p>
+  <p><a href="privacy.html">プライバシーポリシー</a> &middot; <a href="terms.html">利用規約</a></p>
+</footer>
+<script>
+fetch('press-release.md')
+  .then(res => res.text())
+  .then(md => {
+    document.getElementById('content').innerHTML = marked.parse(md);
+  });
+</script>
+</body>
+</html>
