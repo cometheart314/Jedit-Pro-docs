@@ -32,19 +32,23 @@
       <li>Contacts or calendar data</li>
       <li>Document contents</li>
       <li>Contents of files targeted by multi-file find &amp; replace, or the search/replace strings used</li>
+      <li>Usage statistics such as how often the application is launched</li>
     </ul>
   </section>
 
   <section>
     <h2>Network Communication</h2>
-    <p>Jedit Pro connects to a server at launch to check for in-app messages. In this communication:</p>
+    <p>Jedit Pro does not connect to our servers. It never records application launches or transmits usage statistics. The network is used only in response to your own actions, in the following cases:</p>
     <ul>
-      <li>Only standard HTTP requests are sent</li>
-      <li>Document contents and user personal information are not transmitted</li>
-      <li>For usage statistics, the requesting IP address is recorded after being hashed (one-way transformation)</li>
-      <li>The original IP address cannot be recovered from the hashed value</li>
-      <li>This information is used solely for tallying daily unique user counts</li>
+      <li>When a Markdown document references an image at an external URL, that image is fetched in order to display it</li>
+      <li>When you configure text-to-speech to use Google Cloud Text-to-Speech (see &ldquo;Text-to-Speech&rdquo; below)</li>
+      <li>When you enable the MCP server (see &ldquo;MCP Server and AI Client Integration&rdquo; below; traffic stays within your own Mac)</li>
     </ul>
+  </section>
+
+  <section>
+    <h2>Text-to-Speech</h2>
+    <p>By default, text-to-speech uses the speech synthesis built into macOS and involves no network communication. Only if you enter your own Google Cloud Text-to-Speech API key in Preferences is the text to be spoken sent to Google's servers, which return the synthesized audio. That communication is governed by Google's privacy policy and terms of service. The API key is stored locally on your Mac and is never transmitted to us. If you prefer not to send text to an external service, simply leave the API key blank.</p>
   </section>
 
   <section>
@@ -79,7 +83,7 @@
     <p>For questions regarding privacy, please contact Artman21 User Support at <a href="mailto:support@artman21.co.jp">support@artman21.co.jp</a>.</p>
   </section>
 
-  <p style="margin-top: 48px; font-size: 13px; color: #888;">Last updated: July 25, 2026</p>
+  <p style="margin-top: 48px; font-size: 13px; color: #888;">Last updated: August 20, 2026</p>
 </main>
 <footer>
   <p>&copy; 2026 Satoshi Matsumoto. All rights reserved.</p>
